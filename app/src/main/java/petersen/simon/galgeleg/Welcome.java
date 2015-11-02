@@ -1,16 +1,25 @@
 package petersen.simon.galgeleg;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
-public class Welcome extends AppCompatActivity {
+public class Welcome extends AppCompatActivity implements View.OnClickListener {
+
+    Button spil, regler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        spil = (Button) findViewById(R.id.spilButton);
+        regler = (Button) findViewById(R.id.reglerButton);
+        spil.setOnClickListener(this);
+        regler.setOnClickListener(this);
     }
 
     @Override
@@ -33,5 +42,16 @@ public class Welcome extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == spil) {
+            Intent i = new Intent(this, SpilActivity.class);
+            startActivity(i);
+        } else {
+            Intent i = new Intent(this, ReglerActivity.class);
+            startActivity(i);
+        }
     }
 }

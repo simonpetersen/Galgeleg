@@ -27,9 +27,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/inputEdit"
         android:hint="Gæt på et bogstav"
-        android:layout_below="@+id/brugtBogstaver"
-        android:layout_alignStart="@+id/brugtBogstaver"
-        android:layout_marginTop="30dp"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/forkerte"
         android:layout_alignEnd="@+id/galgeImage" />
 
     <Button
@@ -38,7 +37,7 @@
         android:text="Check"
         android:id="@+id/checkButton"
         android:layout_below="@+id/inputEdit"
-        android:layout_alignLeft="@+id/textView"
+        android:layout_alignLeft="@+id/brugtBogstaver"
         android:layout_alignEnd="@+id/inputEdit" />
 
     <TextView
@@ -54,9 +53,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Brugte bogstaver:"
+        android:text="Brugte:"
         android:id="@+id/brugtBogstaver"
         android:layout_below="@+id/textView"
         android:layout_alignStart="@+id/textView"
         android:layout_marginTop="31dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Forkerte:"
+        android:id="@+id/forkerte"
+        android:layout_below="@+id/brugtBogstaver"
+        android:layout_alignStart="@+id/brugtBogstaver"
+        android:layout_marginTop="34dp" />
 </RelativeLayout>

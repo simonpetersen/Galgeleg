@@ -9,17 +9,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SPIL"
-        android:id="@+id/button"
+        android:id="@+id/spilButton"
         android:layout_marginTop="123dp"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/button2" />
+        android:layout_alignEnd="@+id/reglerButton" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="REGLER"
-        android:id="@+id/button2"
-        android:layout_below="@+id/button"
+        android:id="@+id/reglerButton"
+        android:layout_below="@+id/spilButton"
         android:layout_centerHorizontal="true" />
 
     <TextView

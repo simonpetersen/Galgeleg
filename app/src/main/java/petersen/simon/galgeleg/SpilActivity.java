@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import petersen.simon.galgeleg.galgeleg.Galgelogik;
 
 /**
@@ -33,6 +36,7 @@ public class SpilActivity extends AppCompatActivity implements View.OnClickListe
         input = (EditText) findViewById(R.id.inputEdit);
         ordView = (TextView) findViewById(R.id.ordView);
         ordView.setText(logik.getSynligtOrd());
+        System.out.println(logik.getOrdet());
 
         brugteBogstaver = (TextView) findViewById(R.id.brugtBogstaver);
         check = (Button) findViewById(R.id.checkButton);
@@ -63,6 +67,34 @@ public class SpilActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        if (logik.erSpilletVundet()) {
+            check.setText("Du har vundet!");
+        } else if (logik.erSpilletTabt()) {
 
+        }
+        if (input.getText().length()!=1) {
+            input.setHint("Kun et bogstav!");
+            input.setText("");
+        } else {
+            String b = input.getText().toString();
+            logik.gætBogstav(b);
+            ordView.setText(logik.getSynligtOrd());
+            input.setHint("Gæt et bogstav");
+            input.setText("");
+            opdaterBrugteBogstaver();
+        }
     }
+
+    private void opdaterBrugteBogstaver() {
+        ArrayList<String> bogstaver = logik.getBrugteBogstaver();
+        String str = "Brugte bogstaver: ";
+        for (int i = 0; i<bogstaver.size(); i++) {
+            if (i == bogstaver.size()-1)
+                str += bogstaver.get(i)+".";
+            else
+                str += bogstaver.get(i)+", ";
+        }
+        brugteBogstaver.setText(str);
+    }
+
 }

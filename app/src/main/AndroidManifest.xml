@@ -20,6 +20,10 @@
             android:name=".ReglerActivity"
             android:label="@string/title_activity_regler" >
         </activity>
+        <activity
+            android:name=".SpilActivity"
+            android:label="SpilActivity" >
+        </activity>
     </application>
 
 </manifest>
