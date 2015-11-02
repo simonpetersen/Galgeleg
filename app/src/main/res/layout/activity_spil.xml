@@ -25,22 +25,21 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_below="@+id/textView"
-        android:layout_alignStart="@+id/textView"
+        android:id="@+id/inputEdit"
+        android:hint="Gæt på et bogstav"
+        android:layout_below="@+id/brugtBogstaver"
+        android:layout_alignStart="@+id/brugtBogstaver"
         android:layout_marginTop="30dp"
-        android:layout_alignEnd="@+id/galgeImage"
-        android:hint="Gæt på et bogstav" />
+        android:layout_alignEnd="@+id/galgeImage" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Check"
         android:id="@+id/checkButton"
-        android:layout_below="@+id/editText"
-        android:layout_alignStart="@+id/editText"
-        android:layout_marginTop="37dp"
-        android:layout_alignEnd="@+id/editText" />
+        android:layout_below="@+id/inputEdit"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignEnd="@+id/inputEdit" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,4 +49,14 @@
         android:id="@+id/ordView"
         android:layout_alignTop="@+id/textView"
         android:layout_toEndOf="@+id/textView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Brugte bogstaver:"
+        android:id="@+id/brugtBogstaver"
+        android:layout_below="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginTop="31dp" />
 </RelativeLayout>

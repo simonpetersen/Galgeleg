@@ -4,25 +4,39 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import petersen.simon.galgeleg.galgeleg.Galgelogik;
+
 /**
  * Created by Simon on 02/11/15.
  */
-public class SpilActivity extends AppCompatActivity {
+public class SpilActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageView iv;
     EditText input;
     Button check;
-    TextView ordView;
+    TextView ordView, brugteBogstaver;
+    Galgelogik logik;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spil);
+        logik = new Galgelogik();
+        logik.nulstil();
+
+        input = (EditText) findViewById(R.id.inputEdit);
+        ordView = (TextView) findViewById(R.id.ordView);
+        ordView.setText(logik.getSynligtOrd());
+
+        brugteBogstaver = (TextView) findViewById(R.id.brugtBogstaver);
+        check = (Button) findViewById(R.id.checkButton);
+        check.setOnClickListener(this);
     }
 
     @Override
@@ -45,5 +59,10 @@ public class SpilActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
