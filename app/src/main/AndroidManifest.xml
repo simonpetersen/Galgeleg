@@ -18,11 +18,11 @@
         </activity>
         <activity
             android:name=".ReglerActivity"
-            android:label="@string/title_activity_regler" >
+            android:label="Galgeleg" >
         </activity>
         <activity
             android:name=".SpilActivity"
-            android:label="SpilActivity" >
+            android:label="Galgeleg" >
         </activity>
     </application>
 

@@ -23,7 +23,7 @@ public class SpilActivity extends AppCompatActivity implements View.OnClickListe
     ImageView iv;
     EditText input;
     Button check;
-    TextView ordView, brugteBogstaver;
+    TextView ordView, brugteBogstaver, forkerte;
     Galgelogik logik;
 
     @Override
@@ -39,7 +39,9 @@ public class SpilActivity extends AppCompatActivity implements View.OnClickListe
         System.out.println(logik.getOrdet());
 
         brugteBogstaver = (TextView) findViewById(R.id.brugtBogstaver);
-        check = (Button) findViewById(R.id.checkButton);
+        forkerte = (TextView) findViewById(R.id.forkert);
+        iv = (ImageView) findViewById(R.id.imageView);
+        check = (Button) findViewById(R.id.button);
         check.setOnClickListener(this);
     }
 
@@ -67,27 +69,28 @@ public class SpilActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (logik.erSpilletVundet()) {
-            check.setText("Du har vundet!");
-        } else if (logik.erSpilletTabt()) {
-
-        }
-        if (input.getText().length()!=1) {
+        if (input.getText().length()>1) {
             input.setHint("Kun et bogstav!");
             input.setText("");
+        } else if (input.getText().length()==0) {
+            input.setHint("Skriv et bogstav!");
         } else {
             String b = input.getText().toString();
             logik.gætBogstav(b);
             ordView.setText(logik.getSynligtOrd());
             input.setHint("Gæt et bogstav");
             input.setText("");
-            opdaterBrugteBogstaver();
+            opdaterSkærm();
         }
+        if (logik.erSpilletVundet())
+            check.setText("Du har vundet!");
+        if (logik.erSpilletTabt())
+            check.setText("Du har tabt!");
     }
 
-    private void opdaterBrugteBogstaver() {
+    private void opdaterSkærm() {
         ArrayList<String> bogstaver = logik.getBrugteBogstaver();
-        String str = "Brugte bogstaver: ";
+        String str = "Brugte: ";
         for (int i = 0; i<bogstaver.size(); i++) {
             if (i == bogstaver.size()-1)
                 str += bogstaver.get(i)+".";
@@ -95,6 +98,17 @@ public class SpilActivity extends AppCompatActivity implements View.OnClickListe
                 str += bogstaver.get(i)+", ";
         }
         brugteBogstaver.setText(str);
+        forkerte.setText("Forkerte: " + logik.getAntalForkerteBogstaver());
+        if (logik.getAntalForkerteBogstaver()>0) {
+            int id = R.mipmap.forkert1 + logik.getAntalForkerteBogstaver()-1;
+            iv.setImageResource(id);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
     }
 
 }

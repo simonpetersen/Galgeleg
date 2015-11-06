@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/galgeImage"
-        android:layout_marginTop="48dp"
-        android:src="@mipmap/ic_launcher"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="46dp" />
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/activity_spil">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,33 +9,26 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Ordet: "
         android:id="@+id/textView"
-        android:layout_alignBottom="@+id/galgeImage"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="41dp" />
+        android:layout_marginTop="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/brugtBogstaver" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inputEdit"
-        android:hint="Gæt på et bogstav"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/forkerte"
-        android:layout_alignEnd="@+id/galgeImage" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Check"
-        android:id="@+id/checkButton"
-        android:layout_below="@+id/inputEdit"
-        android:layout_alignLeft="@+id/brugtBogstaver"
-        android:layout_alignEnd="@+id/inputEdit" />
+        android:hint="Gæt et bogstav"
+        android:layout_marginLeft="34dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/forkert"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="********"
+        android:text="***"
         android:id="@+id/ordView"
         android:layout_alignTop="@+id/textView"
         android:layout_toEndOf="@+id/textView" />
@@ -53,19 +37,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Brugte:"
+        android:text="Brugte: "
         android:id="@+id/brugtBogstaver"
         android:layout_below="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_marginTop="31dp" />
+        android:layout_alignStart="@+id/inputEdit" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Forkerte:"
-        android:id="@+id/forkerte"
+        android:text="Forkerte: "
+        android:id="@+id/forkert"
         android:layout_below="@+id/brugtBogstaver"
-        android:layout_alignStart="@+id/brugtBogstaver"
-        android:layout_marginTop="34dp" />
+        android:layout_alignStart="@+id/brugtBogstaver" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CHECK"
+        android:id="@+id/button"
+        android:layout_below="@+id/inputEdit"
+        android:layout_alignStart="@+id/inputEdit"
+        android:layout_alignEnd="@+id/inputEdit" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_marginTop="27dp"
+        android:src="@mipmap/galge"
+        android:layout_below="@+id/button"
+        android:layout_alignStart="@+id/button" />
+
 </RelativeLayout>

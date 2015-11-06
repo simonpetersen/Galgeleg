@@ -49,6 +49,7 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener {
         if (v == spil) {
             Intent i = new Intent(this, SpilActivity.class);
             startActivity(i);
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         } else {
             Intent i = new Intent(this, ReglerActivity.class);
             startActivity(i);
