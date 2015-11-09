@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class Welcome extends AppCompatActivity implements View.OnClickListener {
 
-    Button spil, regler;
+    Button spil, regler, vælgOrd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +18,10 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_welcome);
         spil = (Button) findViewById(R.id.spilButton);
         regler = (Button) findViewById(R.id.reglerButton);
+        vælgOrd = (Button) findViewById(R.id.listOrdButton);
         spil.setOnClickListener(this);
         regler.setOnClickListener(this);
+        vælgOrd.setOnClickListener(this);
     }
 
     @Override
@@ -50,9 +52,11 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener {
             Intent i = new Intent(this, SpilActivity.class);
             startActivity(i);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
-        } else {
+        } else if (v == regler) {
             Intent i = new Intent(this, ReglerActivity.class);
             startActivity(i);
+        } else {
+
         }
     }
 }

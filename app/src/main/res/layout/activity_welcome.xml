@@ -10,17 +10,19 @@
         android:layout_height="wrap_content"
         android:text="SPIL"
         android:id="@+id/spilButton"
-        android:layout_marginTop="123dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/reglerButton" />
+        android:layout_marginTop="64dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignStart="@+id/reglerButton"
+        android:layout_alignEnd="@+id/listOrdButton" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="REGLER"
         android:id="@+id/reglerButton"
-        android:layout_below="@+id/spilButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/listOrdButton"
+        android:layout_alignEnd="@+id/listOrdButton" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,4 +35,12 @@
         android:layout_marginTop="30dp"
         android:textSize="25dp"
         android:textIsSelectable="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VÆLG ORD"
+        android:id="@+id/listOrdButton"
+        android:layout_below="@+id/spilButton"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

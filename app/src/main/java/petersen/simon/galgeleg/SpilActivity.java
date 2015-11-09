@@ -82,10 +82,14 @@ public class SpilActivity extends AppCompatActivity implements View.OnClickListe
             input.setText("");
             opdaterSkærm();
         }
-        if (logik.erSpilletVundet())
+        if (logik.erSpilletVundet()) {
             check.setText("Du har vundet!");
-        if (logik.erSpilletTabt())
+            finish();
+        }
+        if (logik.erSpilletTabt()) {
             check.setText("Du har tabt!");
+            finish();
+        }
     }
 
     private void opdaterSkærm() {
