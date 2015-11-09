@@ -24,6 +24,10 @@
             android:name=".SpilActivity"
             android:label="Galgeleg" >
         </activity>
+        <activity
+            android:name=".VaelgOrdActivity"
+            android:label="Galgeleg" >
+        </activity>
     </application>
 
 </manifest>

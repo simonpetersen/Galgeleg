@@ -20,18 +20,18 @@ import petersen.simon.galgeleg.galgeleg.Galgelogik;
  */
 public class SpilActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView iv;
-    EditText input;
-    Button check;
-    TextView ordView, brugteBogstaver, forkerte;
-    Galgelogik logik;
+    private ImageView iv;
+    private EditText input;
+    private Button check, back;
+    private TextView ordView, brugteBogstaver, forkerte;
+    public static Galgelogik logik;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spil);
-        logik = new Galgelogik();
-        logik.nulstil();
+
+        if (logik == null) logik = new Galgelogik();
 
         input = (EditText) findViewById(R.id.inputEdit);
         ordView = (TextView) findViewById(R.id.ordView);
@@ -42,7 +42,9 @@ public class SpilActivity extends AppCompatActivity implements View.OnClickListe
         forkerte = (TextView) findViewById(R.id.forkert);
         iv = (ImageView) findViewById(R.id.imageView);
         check = (Button) findViewById(R.id.button);
+        back = (Button) findViewById(R.id.backButton);
         check.setOnClickListener(this);
+        back.setOnClickListener(this);
     }
 
     @Override
@@ -84,10 +86,13 @@ public class SpilActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (logik.erSpilletVundet()) {
             check.setText("Du har vundet!");
-            finish();
+            logik.nulstil();
         }
         if (logik.erSpilletTabt()) {
             check.setText("Du har tabt!");
+            logik.nulstil();
+        }
+        if (v == back) {
             finish();
         }
     }

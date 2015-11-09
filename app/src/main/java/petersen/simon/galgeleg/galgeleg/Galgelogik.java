@@ -52,6 +52,10 @@ public class Galgelogik {
     return spilletErTabt || spilletErVundet;
   }
 
+  public void setOrdet(String ordet) {
+    this.ordet = ordet;
+  }
+
 
   public Galgelogik() {
     muligeOrd.add("fodbold");
@@ -149,5 +153,13 @@ public class Galgelogik {
 
     System.out.println("muligeOrd = " + muligeOrd);
     nulstil();
+  }
+
+  public String[] getArrayAfMuligeOrd() {
+    String[] nytArrOrd = new String[muligeOrd.size()];
+    for(int i=0; i<nytArrOrd.length; i++) {
+      nytArrOrd[i] = muligeOrd.get(i);
+    }
+    return nytArrOrd;
   }
 }

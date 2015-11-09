@@ -56,7 +56,7 @@ public class Welcome extends AppCompatActivity implements View.OnClickListener {
             Intent i = new Intent(this, ReglerActivity.class);
             startActivity(i);
         } else {
-
+            startActivity(new Intent(this, VaelgOrdActivity.class));
         }
     }
 }
