@@ -1,5 +1,6 @@
 package petersen.simon.galgeleg.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,10 +22,11 @@ import petersen.simon.galgeleg.galgeleg.Galgelogik;
  */
 public class SpilFragment extends Fragment implements View.OnClickListener {
 
-    private ImageView iv;
+    private static ImageView iv;
     private EditText input;
     private Button check;
-    private TextView ordView, brugteBogstaver, forkerte;
+    private TextView ordView, forkerte;
+    private static TextView brugteBogstaver;
     public static Galgelogik logik;
 
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
@@ -70,7 +73,7 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void opdaterSkærm() {
+    public static void opdaterSkærm() {
         ArrayList<String> bogstaver = logik.getBrugteBogstaver();
         String str = "Brugte: ";
         for (int i = 0; i<bogstaver.size(); i++) {
@@ -86,4 +89,9 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
             iv.setImageResource(id);
         }
     }
+    /* Skal indsættes ved genstart ved ryst
+    public void genstartBesked(){
+        Toast.makeText(getActivity(), "Spillet blev genstartet.", Toast.LENGTH_SHORT).show();
+    }
+    */
 }
