@@ -25,8 +25,8 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
     private static ImageView iv;
     private EditText input;
     private Button check;
-    private TextView ordView, forkerte;
-    private static TextView brugteBogstaver;
+    private TextView ordView;
+    private static TextView brugteBogstaver, forkerte;
     public static Galgelogik logik;
 
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
