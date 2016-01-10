@@ -1,8 +1,8 @@
 package petersen.simon.galgeleg.fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,7 +21,7 @@ import petersen.simon.galgeleg.galgeleg.Galgelogik;
  */
 public class SpilFragment extends Fragment implements View.OnClickListener {
 
-    private static ImageView iv;
+    private static ImageView iv, tabt;
     private EditText input;
     private Button check;
     private TextView ordView;
@@ -34,12 +33,28 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
         if (logik == null) logik = new Galgelogik();
 
         input = (EditText) view.findViewById(R.id.inputEdit);
+        input.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int tastekode, KeyEvent handling) {
+                if (logik.erSpilletTabt()){
+                    tabt.setImageResource(R.mipmap.tabt);
+                    input.setClickable(false);
+                }
+                else if ((handling.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (tastekode == KeyEvent.KEYCODE_ENTER && !logik.erSpilletTabt())) {
+                    tjek();
+                    return true;
+                }
+                return false;
+            }
+        });
         ordView = (TextView) view.findViewById(R.id.ordView);
         ordView.setText(logik.getSynligtOrd());
 
-        brugteBogstaver = (TextView) view.findViewById(R.id.brugtBogstaver);
-        forkerte = (TextView) view.findViewById(R.id.forkert);
+
+        brugteBogstaver = (TextView) view.findViewById(R.id.brugte);
+        forkerte = (TextView) view.findViewById(R.id.forkerte);
         iv = (ImageView) view.findViewById(R.id.imageView);
+        tabt = (ImageView) view.findViewById(R.id.tabt);
         check = (Button) view.findViewById(R.id.button);
         check.setOnClickListener(this);
 
@@ -48,6 +63,10 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        tjek();
+    }
+
+    public void tjek(){
         if (input.getText().length()>1) {
             input.setHint("Kun et bogstav!");
             input.setText("");
@@ -62,12 +81,12 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
             opdaterSkærm();
         }
         if (logik.erSpilletVundet()) {
-            check.setText("Du har vundet!");
+            tabt.setImageResource(R.mipmap.vundet);
             check.setClickable(false);
             logik.nulstil();
         }
         if (logik.erSpilletTabt()) {
-            check.setText("Du har tabt!");
+            tabt.setImageResource(R.mipmap.tabt);
             check.setClickable(false);
             logik.nulstil();
         }
@@ -75,7 +94,7 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
 
     public static void opdaterSkærm() {
         ArrayList<String> bogstaver = logik.getBrugteBogstaver();
-        String str = "Brugte: ";
+        String str = " ";
         for (int i = 0; i<bogstaver.size(); i++) {
             if (i == bogstaver.size()-1)
                 str += bogstaver.get(i)+".";
@@ -83,12 +102,14 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
                 str += bogstaver.get(i)+", ";
         }
         brugteBogstaver.setText(str);
-        forkerte.setText("Forkerte: " + logik.getAntalForkerteBogstaver());
+        forkerte.setText(" " + logik.getAntalForkerteBogstaver());
         if (logik.getAntalForkerteBogstaver()>0) {
             int id = R.mipmap.forkert1 + logik.getAntalForkerteBogstaver()-1;
             iv.setImageResource(id);
         }
     }
+
+
     /* Skal indsættes ved genstart ved ryst
     public void genstartBesked(){
         Toast.makeText(getActivity(), "Spillet blev genstartet.", Toast.LENGTH_SHORT).show();
