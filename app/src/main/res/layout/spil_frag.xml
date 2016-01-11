@@ -39,7 +39,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Brugte: "
         android:id="@+id/brugtBogstaver"
-        android:src="@mipmap/brugteCopy"
+        android:src="@mipmap/brugt"
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -79,7 +79,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/brugte"
-        android:src="@mipmap/brugteCopy"
+        android:src="@mipmap/brugt"
         android:layout_alignBottom="@+id/brugtBogstaver"
         android:layout_toRightOf="@+id/brugtBogstaver"
         android:layout_toEndOf="@+id/brugtBogstaver"
