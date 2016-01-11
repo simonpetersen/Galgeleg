@@ -107,6 +107,8 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
             int id = R.mipmap.forkert1 + logik.getAntalForkerteBogstaver()-1;
             iv.setImageResource(id);
         }
+        else
+            iv.setImageResource(R.mipmap.galge);
     }
 
 
