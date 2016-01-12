@@ -1,6 +1,7 @@
 package petersen.simon.galgeleg.fragments;
 
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -10,9 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import petersen.simon.galgeleg.HovedAktivitet;
 import petersen.simon.galgeleg.R;
 import petersen.simon.galgeleg.galgeleg.Galgelogik;
 
@@ -112,9 +115,12 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    /* Skal indsættes ved genstart ved ryst
-    public void genstartBesked(){
+    /*Skal indsættes ved genstart ved ryst
+    public static void genstartVedRyst(){
+        logik.nulstil();
+        opdaterSkærm();
         Toast.makeText(getActivity(), "Spillet blev genstartet.", Toast.LENGTH_SHORT).show();
+        HovedAktivitet.benytVibrator();
     }
-    */
+*/
 }

@@ -3,6 +3,7 @@ package petersen.simon.galgeleg.galgeleg;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.os.Vibrator;
 import android.widget.Toast;
 
 import petersen.simon.galgeleg.fragments.SpilFragment;
@@ -21,8 +22,7 @@ public class Sensorlistener implements SensorEventListener {
 
             if(sum > 3*t){
                 //indsæt restart og pisk lyd
-                SpilFragment.logik.nulstil();
-                SpilFragment.opdaterSkærm();
+                //SpilFragment.genstartVedRyst();
 
             }
         }

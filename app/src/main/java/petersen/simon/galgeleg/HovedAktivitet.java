@@ -5,11 +5,13 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.AsyncTask;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.Toast;
 
 import petersen.simon.galgeleg.fragments.MenuFragment;
 import petersen.simon.galgeleg.fragments.SpilFragment;
@@ -29,6 +31,8 @@ public class HovedAktivitet extends AppCompatActivity {
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(lytter, accel, SensorManager.SENSOR_DELAY_NORMAL);
+
+
 
         if (SpilFragment.logik == null) SpilFragment.logik = new Galgelogik();
 
@@ -74,5 +78,14 @@ public class HovedAktivitet extends AppCompatActivity {
     public void onStop(){
         sensorManager.unregisterListener(lytter);
 
+    }*/
+    /*
+    public void benytVibrator(){
+        try {
+            Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+            vibrator.vibrate(500);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }*/
 }
