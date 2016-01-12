@@ -1,5 +1,6 @@
 package petersen.simon.galgeleg.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
@@ -115,12 +116,19 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    /*Skal indsættes ved genstart ved ryst
-    public static void genstartVedRyst(){
+    //Skal indsættes ved genstart ved ryst
+    public void genstartVedRyst(boolean check){
         logik.nulstil();
         opdaterSkærm();
         Toast.makeText(getActivity(), "Spillet blev genstartet.", Toast.LENGTH_SHORT).show();
-        HovedAktivitet.benytVibrator();
+
+        try {
+            Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+            vibrator.vibrate(500);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-*/
+
 }

@@ -79,13 +79,5 @@ public class HovedAktivitet extends AppCompatActivity {
         sensorManager.unregisterListener(lytter);
 
     }*/
-    /*
-    public void benytVibrator(){
-        try {
-            Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-            vibrator.vibrate(500);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
+
 }
