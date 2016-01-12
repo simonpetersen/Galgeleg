@@ -14,15 +14,17 @@ import petersen.simon.galgeleg.R;
  */
 public class MenuFragment extends Fragment implements View.OnClickListener {
 
-    Button spil, regler, vælgOrd;
+    Button spil, regler, vælgOrd, score;
 
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         View view = i.inflate(R.layout.menu_frag, container, false);
         spil = (Button) view.findViewById(R.id.spilButton);
+        score = (Button) view.findViewById(R.id.buttonscore);
         regler = (Button) view.findViewById(R.id.reglerButton);
         vælgOrd = (Button) view.findViewById(R.id.listOrdButton);
         spil.setOnClickListener(this);
+        score.setOnClickListener(this);
         regler.setOnClickListener(this);
         vælgOrd.setOnClickListener(this);
 
@@ -36,6 +38,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
             fragment = new SpilFragment();
         } else if (v == vælgOrd) {
             fragment = new VaelgOrdFragment();
+        } else if (v == score) {
+            fragment = new HighScoreFragment();
         } else {
             fragment = new ReglerFragment();
         }

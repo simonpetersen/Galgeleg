@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,6 +32,7 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
     private TextView ordView;
     private static TextView brugteBogstaver, forkerte;
     public static Galgelogik logik;
+    private Chronometer timer;
 
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         View view = i.inflate(R.layout.spil_frag, container, false);
@@ -56,6 +58,8 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
 
 
         brugteBogstaver = (TextView) view.findViewById(R.id.brugte);
+        timer = (Chronometer) view.findViewById(R.id.timer);
+        timer.start();
         forkerte = (TextView) view.findViewById(R.id.forkerte);
         iv = (ImageView) view.findViewById(R.id.imageView);
         tabt = (ImageView) view.findViewById(R.id.tabt);

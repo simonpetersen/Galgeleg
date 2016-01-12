@@ -16,11 +16,13 @@ import android.widget.Toast;
 import petersen.simon.galgeleg.fragments.MenuFragment;
 import petersen.simon.galgeleg.fragments.SpilFragment;
 import petersen.simon.galgeleg.galgeleg.Galgelogik;
+import petersen.simon.galgeleg.galgeleg.HighScoreLogik;
 import petersen.simon.galgeleg.galgeleg.Sensorlistener;
 
 public class HovedAktivitet extends AppCompatActivity {
     private SensorManager sensorManager;
     private Sensorlistener lytter = new Sensorlistener();
+    public static HighScoreLogik Hlogik = new HighScoreLogik();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
