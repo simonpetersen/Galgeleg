@@ -35,7 +35,7 @@ import petersen.simon.galgeleg.galgeleg.Sensorlistener;
  */
 public class SpilFragment extends Fragment implements View.OnClickListener {
 
-    private static ImageView iv, tabt;
+    private static ImageView iv, tabt, tabt1;
     private EditText input;
     private Button check;
     private static TextView ordView;
@@ -74,9 +74,10 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
         forkerte = (TextView) view.findViewById(R.id.forkerte);
         iv = (ImageView) view.findViewById(R.id.imageView);
         tabt = (ImageView) view.findViewById(R.id.tabt);
+        tabt1 = (ImageView) view.findViewById(R.id.tabt1);
         check = (Button) view.findViewById(R.id.button);
         check.setOnClickListener(this);
-
+        logik.opdaterSynligtOrd();
         opdaterSkærm();
 
         return view;
@@ -89,6 +90,9 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
                 logik.nulstil();
                 opdaterSkærm();
                 tabt.setImageResource(0);
+                timer.setBase(SystemClock.elapsedRealtime());
+                timer.start();
+                tabt1.setImageResource(0);
                 check.setText("CHECK");
             }
             else
@@ -129,11 +133,13 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
                 builder.show();
             }
             tabt.setImageResource(R.mipmap.vundet);
+            tabt1.setImageResource(R.mipmap.vundet);
             check.setText("Prøv igen");
 
         }
         if (logik.erSpilletTabt()) {
             tabt.setImageResource(R.mipmap.tabt);
+            tabt1.setImageResource(R.mipmap.tabt);
             check.setText("Prøv igen");
         }
     }
@@ -147,6 +153,7 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
             else
                 str += bogstaver.get(i)+", ";
         }
+
         ordView.setText(logik.getSynligtOrd());
         brugteBogstaver.setText(str);
         forkerte.setText(" " + logik.getAntalForkerteBogstaver());

@@ -40,7 +40,7 @@ public class HighScoreLogik {
 
     public HighScoreLogik(){
         for ( int i = 0; i < 10; i++) {
-            parArray.add(new HighScorePar("00:00", "None"));
+            parArray.add(new HighScorePar("00:00", "    Tom plads    "));
         }
     }
 }
