@@ -1,10 +1,13 @@
 package petersen.simon.galgeleg.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -24,6 +27,7 @@ import java.util.ArrayList;
 import petersen.simon.galgeleg.HovedAktivitet;
 import petersen.simon.galgeleg.R;
 import petersen.simon.galgeleg.galgeleg.Galgelogik;
+import petersen.simon.galgeleg.galgeleg.HighScorePar;
 import petersen.simon.galgeleg.galgeleg.Sensorlistener;
 
 /**
@@ -39,9 +43,11 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
     public static Galgelogik logik;
     private Chronometer timer;
 
+
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         View view = i.inflate(R.layout.spil_frag, container, false);
         if (logik == null) logik = new Galgelogik();
+
 
         input = (EditText) view.findViewById(R.id.inputEdit);
         input.setOnKeyListener(new View.OnKeyListener() {
@@ -71,6 +77,8 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
         check = (Button) view.findViewById(R.id.button);
         check.setOnClickListener(this);
 
+        opdaterSkærm();
+
         return view;
     }
 
@@ -81,6 +89,7 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
                 logik.nulstil();
                 opdaterSkærm();
                 tabt.setImageResource(0);
+                check.setText("CHECK");
             }
             else
                 tjek();
@@ -96,7 +105,7 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
         } else if (input.getText().length()==0) {
             input.setHint("Skriv et bogstav!");
         } else {
-            String b = input.getText().toString();
+            String b = input.getText().toString().toLowerCase();
             logik.gætBogstav(b);
             ordView.setText(logik.getSynligtOrd());
             input.setHint("Gæt et bogstav");
@@ -104,8 +113,24 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
             opdaterSkærm();
         }
         if (logik.erSpilletVundet()) {
+            timer.stop();
+            if(HovedAktivitet.Hlogik.isHigh(timer.getText().toString())){
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Tillykke du er kommet på HighScore listen!");
+                final EditText highNavn = new EditText(getActivity());
+                highNavn.setHint("Indtast navn");
+                builder.setView(highNavn);
+                builder.setPositiveButton("Enter", new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        HovedAktivitet.Hlogik.InsertHighscore(timer.getText().toString(), highNavn.getText().toString());
+//                        getFragmentManager().popBackStack();
+                    }
+                });
+                builder.show();
+            }
             tabt.setImageResource(R.mipmap.vundet);
             check.setText("Prøv igen");
+
         }
         if (logik.erSpilletTabt()) {
             tabt.setImageResource(R.mipmap.tabt);
@@ -145,5 +170,10 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
             e.printStackTrace();
         }
 
+    }
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        logik.nulstil();
     }
 }
