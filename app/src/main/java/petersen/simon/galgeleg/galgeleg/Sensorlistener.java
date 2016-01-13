@@ -12,7 +12,7 @@ import petersen.simon.galgeleg.fragments.SpilFragment;
  * Created by Blumen on 07-01-2016.
  */
 public class Sensorlistener implements SensorEventListener {
-    public static boolean sensorCheck = false;
+    SpilFragment spil = new SpilFragment();
 
     @Override
     public void onSensorChanged(SensorEvent event) {
@@ -24,8 +24,11 @@ public class Sensorlistener implements SensorEventListener {
 
             if(sum > 3*t){
                 //indsæt restart og pisk lyd
-                //SpilFragment.genstartVedRyst();
-                sensorCheck = true;
+
+                SpilFragment.logik.nulstil();
+                SpilFragment.logik.opdaterSynligtOrd();
+                SpilFragment.opdaterSkærm();
+                //spil.genstartVedRyst();
 
             }
         }

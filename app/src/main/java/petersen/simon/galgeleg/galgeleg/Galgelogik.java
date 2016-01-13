@@ -81,11 +81,10 @@ public class Galgelogik {
     spilletErTabt = false;
     ordet = muligeOrd.get(new Random().nextInt(muligeOrd.size()));
     opdaterSynligtOrd();
-
   }
 
 
-  private void opdaterSynligtOrd() {
+  public void opdaterSynligtOrd() {
     synligtOrd = "";
     spilletErVundet = true;
     for (int n = 0; n < ordet.length(); n++) {

@@ -1,9 +1,13 @@
 package petersen.simon.galgeleg.fragments;
 
+import android.app.Activity;
 import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +24,7 @@ import java.util.ArrayList;
 import petersen.simon.galgeleg.HovedAktivitet;
 import petersen.simon.galgeleg.R;
 import petersen.simon.galgeleg.galgeleg.Galgelogik;
+import petersen.simon.galgeleg.galgeleg.Sensorlistener;
 
 /**
  * Created by Simon on 16/11/15.
@@ -29,7 +34,7 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
     private static ImageView iv, tabt;
     private EditText input;
     private Button check;
-    private TextView ordView;
+    private static TextView ordView;
     private static TextView brugteBogstaver, forkerte;
     public static Galgelogik logik;
     private Chronometer timer;
@@ -71,7 +76,17 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        tjek();
+        if(v == check){
+            if(check.getText().equals("Prøv igen")){
+                logik.nulstil();
+                opdaterSkærm();
+                tabt.setImageResource(0);
+            }
+            else
+                tjek();
+        }
+        else
+            tjek();
     }
 
     public void tjek(){
@@ -90,13 +105,11 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
         }
         if (logik.erSpilletVundet()) {
             tabt.setImageResource(R.mipmap.vundet);
-            check.setClickable(false);
-            logik.nulstil();
+            check.setText("Prøv igen");
         }
         if (logik.erSpilletTabt()) {
             tabt.setImageResource(R.mipmap.tabt);
-            check.setClickable(false);
-            logik.nulstil();
+            check.setText("Prøv igen");
         }
     }
 
@@ -109,6 +122,7 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
             else
                 str += bogstaver.get(i)+", ";
         }
+        ordView.setText(logik.getSynligtOrd());
         brugteBogstaver.setText(str);
         forkerte.setText(" " + logik.getAntalForkerteBogstaver());
         if (logik.getAntalForkerteBogstaver()>0) {
@@ -121,9 +135,7 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
 
 
     //Skal indsættes ved genstart ved ryst
-    public void genstartVedRyst(boolean check){
-        logik.nulstil();
-        opdaterSkærm();
+    public void genstartVedRyst(){
         Toast.makeText(getActivity(), "Spillet blev genstartet.", Toast.LENGTH_SHORT).show();
 
         try {
@@ -134,5 +146,4 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
         }
 
     }
-
 }
