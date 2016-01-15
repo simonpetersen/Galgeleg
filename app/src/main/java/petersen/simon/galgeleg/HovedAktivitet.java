@@ -20,8 +20,8 @@ import petersen.simon.galgeleg.galgeleg.HighScoreLogik;
 import petersen.simon.galgeleg.galgeleg.Sensorlistener;
 
 public class HovedAktivitet extends AppCompatActivity {
-    private SensorManager sensorManager;
-    private Sensorlistener lytter = new Sensorlistener();
+    public static SensorManager sensorManager;
+    public static Sensorlistener lytter = new Sensorlistener();
     public static HighScoreLogik Hlogik = new HighScoreLogik();
 
     @Override
@@ -31,8 +31,7 @@ public class HovedAktivitet extends AppCompatActivity {
         setContentView(R.layout.hoved_aktivitet);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        Sensor accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        sensorManager.registerListener(lytter, accel, SensorManager.SENSOR_DELAY_NORMAL);
+
 
 
 
@@ -75,11 +74,5 @@ public class HovedAktivitet extends AppCompatActivity {
         if (getFragmentManager().getBackStackEntryCount()!=1)
             getSupportFragmentManager().popBackStack();
     }
-
-   /* @Override
-    public void onStop(){
-        sensorManager.unregisterListener(lytter);
-
-    }*/
 
 }

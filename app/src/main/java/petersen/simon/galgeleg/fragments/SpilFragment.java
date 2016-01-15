@@ -50,6 +50,8 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
         View view = i.inflate(R.layout.spil_frag, container, false);
         if (logik == null) logik = new Galgelogik();
 
+        Sensor accel = HovedAktivitet.sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        HovedAktivitet.sensorManager.registerListener(HovedAktivitet.lytter, accel, SensorManager.SENSOR_DELAY_NORMAL);
 
         input = (EditText) view.findViewById(R.id.inputEdit);
         input.setOnKeyListener(new View.OnKeyListener() {
