@@ -15,6 +15,10 @@ public class HighScorePar {
         this.time = time;
     }
 
+    public HighScorePar(){
+
+    }
+
     public String getName(){
         return name;
     }

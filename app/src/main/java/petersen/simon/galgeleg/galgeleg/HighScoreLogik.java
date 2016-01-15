@@ -8,7 +8,7 @@ import static java.lang.Integer.parseInt;
  */
 public class HighScoreLogik {
 
-    public static ArrayList<HighScorePar> parArray = new ArrayList<HighScorePar>();
+    public static ArrayList<HighScorePar> parArray;
 
 
     public int timeToInt(String Time) {
@@ -40,7 +40,7 @@ public class HighScoreLogik {
 
     public HighScoreLogik(){
         for ( int i = 0; i < 10; i++) {
-            parArray.add(new HighScorePar("00:00", "    Tom plads    "));
+            parArray.add(new HighScorePar("00:00", "----"));
         }
     }
 }

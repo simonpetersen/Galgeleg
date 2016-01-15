@@ -34,11 +34,11 @@ String [] numre = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10",};
                 View view = super.getView(position, cachedView, parent);
 
                 TextView navn = (TextView) view.findViewById(R.id.navn);
-                navn.setText(HovedAktivitet.Hlogik.parArray.get(position).getName());
+                navn.setText(HighScoreLogik.parArray.get(position).getName());
 
 
                 TextView tid = (TextView) view.findViewById(R.id.tid);
-                tid.setText(HovedAktivitet.Hlogik.parArray.get(position).getTime());
+                tid.setText(HighScoreLogik.parArray.get(position).getTime());
 
                 return view;
             }

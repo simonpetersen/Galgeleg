@@ -26,7 +26,9 @@ import java.util.ArrayList;
 
 import petersen.simon.galgeleg.HovedAktivitet;
 import petersen.simon.galgeleg.R;
+import petersen.simon.galgeleg.diverse.App;
 import petersen.simon.galgeleg.galgeleg.Galgelogik;
+import petersen.simon.galgeleg.galgeleg.HighScoreLogik;
 import petersen.simon.galgeleg.galgeleg.HighScorePar;
 import petersen.simon.galgeleg.galgeleg.Sensorlistener;
 
@@ -127,6 +129,7 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
                 builder.setPositiveButton("Enter", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
                         HovedAktivitet.Hlogik.InsertHighscore(timer.getText().toString(), highNavn.getText().toString());
+                        App.highScoreFirebaseRef.child("scorelist").setValue(HighScoreLogik.parArray);
 //                        getFragmentManager().popBackStack();
                     }
                 });

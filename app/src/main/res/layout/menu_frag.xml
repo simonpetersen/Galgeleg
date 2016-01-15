@@ -64,4 +64,14 @@
         android:layout_alignRight="@+id/reglerButton"
         android:layout_alignEnd="@+id/reglerButton" />
 
+    <ProgressBar
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:indeterminate="false"
+        android:layout_alignTop="@+id/buttonscore"
+        android:layout_alignRight="@+id/buttonscore"
+        android:layout_alignEnd="@+id/buttonscore" />
+
 </RelativeLayout>
