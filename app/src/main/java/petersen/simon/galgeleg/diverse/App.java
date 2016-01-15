@@ -51,6 +51,7 @@ public class App  extends Application {
                     HighScoreLogik.parArray.add(highScorePar);
                 }
                 pmenu.run();
+
             }
 
 
