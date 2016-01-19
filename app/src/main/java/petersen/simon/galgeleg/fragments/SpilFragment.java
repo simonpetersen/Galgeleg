@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.os.Vibrator;
@@ -44,6 +45,7 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
     private static TextView brugteBogstaver, forkerte;
     public static Galgelogik logik;
     private Chronometer timer;
+    private MediaPlayer mpForkert, mpRigtig, mpPisk;
 
 
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
@@ -84,6 +86,10 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
         logik.opdaterSynligtOrd();
         opdaterSkærm();
 
+        mpForkert = MediaPlayer.create(getActivity(), R.raw.forkert_bogstav);
+        mpRigtig = MediaPlayer.create(getActivity(), R.raw.rigtigt_bogstav);
+        mpPisk = MediaPlayer.create(getActivity(), R.raw.genstarts_pisk);
+
         return view;
     }
 
@@ -119,6 +125,18 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
             input.setHint("Gæt et bogstav");
             input.setText("");
             opdaterSkærm();
+            if(Galgelogik.forkertBogstav){
+                mpForkert.start();
+                try {
+                    Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+                    vibrator.vibrate(300);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            else
+                mpRigtig.start();
+
         }
         if (logik.erSpilletVundet()) {
             timer.stop();
@@ -162,6 +180,7 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
         ordView.setText(logik.getSynligtOrd());
         brugteBogstaver.setText(str);
         forkerte.setText(" " + logik.getAntalForkerteBogstaver());
+
         if (logik.getAntalForkerteBogstaver()>0) {
             int id = R.mipmap.forkert1 + logik.getAntalForkerteBogstaver()-1;
             iv.setImageResource(id);

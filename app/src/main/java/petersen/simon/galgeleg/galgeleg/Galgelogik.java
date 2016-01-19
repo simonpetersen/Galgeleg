@@ -20,6 +20,7 @@ public class Galgelogik {
   private boolean sidsteBogstavVarKorrekt;
   private boolean spilletErVundet;
   private boolean spilletErTabt;
+  public static boolean forkertBogstav;
 
 
   public ArrayList<String> getBrugteBogstaver() {
@@ -99,6 +100,7 @@ public class Galgelogik {
   }
 
   public void gætBogstav(String bogstav) {
+    forkertBogstav = false;
     if (bogstav.length() != 1) return;
     System.out.println("Der gættes på bogstavet: " + bogstav);
     if (brugteBogstaver.contains(bogstav)) return;
@@ -110,6 +112,7 @@ public class Galgelogik {
       sidsteBogstavVarKorrekt = true;
       System.out.println("Bogstavet var korrekt: " + bogstav);
     } else {
+      forkertBogstav = true;
       // Vi gættede på et bogstav der ikke var i ordet.
       sidsteBogstavVarKorrekt = false;
       System.out.println("Bogstavet var IKKE korrekt: " + bogstav);
