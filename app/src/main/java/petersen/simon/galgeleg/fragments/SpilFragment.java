@@ -45,7 +45,7 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
     private static TextView brugteBogstaver, forkerte;
     public static Galgelogik logik;
     private Chronometer timer;
-    private MediaPlayer mpForkert, mpRigtig, mpPisk;
+    private static MediaPlayer mpForkert, mpRigtig, mpVundet, mpPisk;
 
 
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
@@ -89,6 +89,7 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
         mpForkert = MediaPlayer.create(getActivity(), R.raw.forkert_bogstav);
         mpRigtig = MediaPlayer.create(getActivity(), R.raw.rigtigt_bogstav);
         mpPisk = MediaPlayer.create(getActivity(), R.raw.genstarts_pisk);
+        mpVundet = MediaPlayer.create(getActivity(), R.raw.vundet);
 
         return view;
     }
@@ -119,8 +120,8 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
         } else if (input.getText().length()==0) {
             input.setHint("Skriv et bogstav!");
         } else {
-            String b = input.getText().toString().toLowerCase();
-            logik.gætBogstav(b);
+            String bogstavGæt = input.getText().toString().toLowerCase();
+            logik.gætBogstav(bogstavGæt);
             ordView.setText(logik.getSynligtOrd());
             input.setHint("Gæt et bogstav");
             input.setText("");
@@ -134,11 +135,12 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
                     e.printStackTrace();
                 }
             }
-            else
+            if (Galgelogik.erSidsteBogstavKorrekt()){
                 mpRigtig.start();
-
+            }
         }
         if (logik.erSpilletVundet()) {
+            mpVundet.start();
             timer.stop();
             if(HovedAktivitet.Hlogik.isHigh(timer.getText().toString())){
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -191,15 +193,16 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
 
 
     //Skal indsættes ved genstart ved ryst
-    public void genstartVedRyst(){
-        Toast.makeText(getActivity(), "Spillet blev genstartet.", Toast.LENGTH_SHORT).show();
-
+    public static void genstartVedRyst(){
+        mpPisk.start();
+       /*
         try {
-            Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+            Vibrator vibrator = (Vibrator) fragment.getActivity().getSystemService(Context.VIBRATOR_SERVICE);
             vibrator.vibrate(500);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    *   */
 
     }
     @Override

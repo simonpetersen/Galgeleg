@@ -12,7 +12,6 @@ import petersen.simon.galgeleg.fragments.SpilFragment;
  * Created by Blumen on 07-01-2016.
  */
 public class Sensorlistener implements SensorEventListener {
-    SpilFragment spil = new SpilFragment();
 
     @Override
     public void onSensorChanged(SensorEvent event) {
@@ -28,8 +27,7 @@ public class Sensorlistener implements SensorEventListener {
                 SpilFragment.logik.nulstil();
                 SpilFragment.logik.opdaterSynligtOrd();
                 SpilFragment.opdaterSkærm();
-                //spil.genstartVedRyst();
-
+                SpilFragment.genstartVedRyst();
 
             }
         }

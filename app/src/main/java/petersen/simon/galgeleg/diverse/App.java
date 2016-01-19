@@ -27,17 +27,6 @@ public class App  extends Application {
     public void onCreate(){
         super.onCreate();
         HighScoreLogik.parArray = new ArrayList<>();
-//        HighScoreLogik.parArray.add(new HighScorePar("07:00", "TEST"));
-//        HighScoreLogik.parArray.add(new HighScorePar("07:00", "TEST"));
-//        HighScoreLogik.parArray.add(new HighScorePar("07:00", "TEST"));
-//        HighScoreLogik.parArray.add(new HighScorePar("07:00", "TEST"));
-//        HighScoreLogik.parArray.add(new HighScorePar("07:00", "TEST"));
-//        HighScoreLogik.parArray.add(new HighScorePar("07:00", "TEST"));
-//        HighScoreLogik.parArray.add(new HighScorePar("07:00", "TEST"));
-//        HighScoreLogik.parArray.add(new HighScorePar("07:00", "TEST"));
-//        HighScoreLogik.parArray.add(new HighScorePar("07:00", "TEST"));
-//        HighScoreLogik.parArray.add(new HighScorePar("07:00", "TEST"));
-
 
         Firebase.setAndroidContext(this);
         highScoreFirebaseRef = new Firebase("https://galgeleg-g41.firebaseio.com/");

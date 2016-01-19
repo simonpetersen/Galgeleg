@@ -17,7 +17,7 @@ public class Galgelogik {
   private ArrayList<String> brugteBogstaver = new ArrayList<String>();
   private String synligtOrd;
   private int antalForkerteBogstaver;
-  private boolean sidsteBogstavVarKorrekt;
+  private static boolean sidsteBogstavVarKorrekt;
   private boolean spilletErVundet;
   private boolean spilletErTabt;
   public static boolean forkertBogstav;
@@ -39,7 +39,7 @@ public class Galgelogik {
     return antalForkerteBogstaver;
   }
 
-  public boolean erSidsteBogstavKorrekt() {
+  public static boolean erSidsteBogstavKorrekt() {
     return sidsteBogstavVarKorrekt;
   }
 
