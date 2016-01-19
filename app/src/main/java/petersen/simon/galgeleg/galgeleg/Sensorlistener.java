@@ -30,6 +30,7 @@ public class Sensorlistener implements SensorEventListener {
                 SpilFragment.opdaterSkærm();
                 //spil.genstartVedRyst();
 
+
             }
         }
     }
