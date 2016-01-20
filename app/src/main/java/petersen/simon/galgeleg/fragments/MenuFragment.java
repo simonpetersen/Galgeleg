@@ -16,7 +16,7 @@ import petersen.simon.galgeleg.diverse.App;
  */
 public class MenuFragment extends Fragment implements View.OnClickListener,Runnable {
 
-    Button spil, regler, vælgOrd, score;
+    Button spil, regler, vælgOrd, score, ToSpillere;
     ProgressBar pbar;
 
     @Override
@@ -26,11 +26,13 @@ public class MenuFragment extends Fragment implements View.OnClickListener,Runna
         score = (Button) view.findViewById(R.id.buttonscore);
         regler = (Button) view.findViewById(R.id.reglerButton);
         vælgOrd = (Button) view.findViewById(R.id.listOrdButton);
+        ToSpillere = (Button) view.findViewById(R.id.ToSpillereIMenu);
         pbar = (ProgressBar) view.findViewById(R.id.progressBar);
         spil.setOnClickListener(this);
         score.setOnClickListener(this);
         regler.setOnClickListener(this);
         vælgOrd.setOnClickListener(this);
+        ToSpillere.setOnClickListener(this);
         pbar.setVisibility(View.VISIBLE);
         App.pmenu = this;
 
@@ -46,7 +48,9 @@ public class MenuFragment extends Fragment implements View.OnClickListener,Runna
             fragment = new VaelgOrdFragment();
         } else if (v == score) {
             fragment = new HighScoreFragment();
-        } else {
+        } else if (v == ToSpillere)
+            fragment = new ToSpillere_frag();
+        else{
             fragment = new ReglerFragment();
         }
         getFragmentManager().beginTransaction()

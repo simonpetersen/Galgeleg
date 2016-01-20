@@ -73,6 +73,16 @@
         android:layout_alignRight="@+id/reglerButton"
         android:layout_alignEnd="@+id/reglerButton" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2 Spillere"
+        android:id="@+id/ToSpillereIMenu"
+        android:layout_below="@+id/buttonscore"
+        android:layout_centerHorizontal="true"
+        android:textSize="25sp"
+        android:layout_alignStart="@+id/reglerButton"
+        android:layout_alignEnd="@+id/reglerButton" />
 
 
 </RelativeLayout>

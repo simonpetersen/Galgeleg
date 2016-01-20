@@ -47,7 +47,6 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
     private Chronometer timer;
     private static MediaPlayer mpForkert, mpRigtig, mpVundet, mpPisk;
 
-
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         View view = i.inflate(R.layout.spil_frag, container, false);
         if (logik == null) logik = new Galgelogik();
@@ -209,5 +208,6 @@ public class SpilFragment extends Fragment implements View.OnClickListener {
     public void onDestroy(){
         super.onDestroy();
         logik.nulstil();
+        HovedAktivitet.sensorManager.unregisterListener(HovedAktivitet.lytter);
     }
 }
