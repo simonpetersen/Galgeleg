@@ -22,6 +22,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener,Runna
     @Override
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         View view = i.inflate(R.layout.menu_frag, container, false);
+        App.pmenu = this;
         spil = (Button) view.findViewById(R.id.spilButton);
         score = (Button) view.findViewById(R.id.buttonscore);
         regler = (Button) view.findViewById(R.id.reglerButton);
@@ -33,8 +34,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener,Runna
         regler.setOnClickListener(this);
         vælgOrd.setOnClickListener(this);
         ToSpillere.setOnClickListener(this);
-        pbar.setVisibility(View.VISIBLE);
-        App.pmenu = this;
+        if (App.vedstart) pbar.setVisibility(View.VISIBLE);
 
         return view;
     }
@@ -62,5 +62,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener,Runna
     @Override
     public void run() {
         pbar.setVisibility(View.INVISIBLE);
+       // App.pmenu = null;
+        App.vedstart = false;
     }
 }

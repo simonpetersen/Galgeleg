@@ -22,12 +22,14 @@ public class App  extends Application {
     public static Firebase highScoreFirebaseRef;
     public static String nr, navn, tid;
     public static Runnable pmenu;
+    public static boolean vedstart;
 
 
     public void onCreate(){
         super.onCreate();
         HighScoreLogik.parArray = new ArrayList<>();
 
+        vedstart = true;
         Firebase.setAndroidContext(this);
         highScoreFirebaseRef = new Firebase("https://galgeleg-g41.firebaseio.com/");
         highScoreFirebaseRef.child("scorelist").addValueEventListener(new ValueEventListener() {
