@@ -44,6 +44,7 @@ public class ToSpillereSpil_frag extends Fragment implements View.OnClickListene
     private static TextView ordView, brugteBogstaver, forkerte, Spiller1point, Spiller2point, Spiller1navn, Spiller2navn, spillertur;
     public static Galgelogik logik;
     private static MediaPlayer mpForkert, mpRigtig, mpVundet;
+    public static String vinder;
 
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
         View view = i.inflate(R.layout.to_spillere_spil_frag, container, false);
@@ -145,10 +146,18 @@ public class ToSpillereSpil_frag extends Fragment implements View.OnClickListene
             if(ToSpillere_frag.spillerTur) {
                 ToSpillere_frag.Spiller2Score++;
                 Spiller2point.setText(String.valueOf(ToSpillere_frag.Spiller2Score));
+                if(ToSpillere_frag.Spiller2Score >= 10) {
+                    vinder = ToSpillere_frag.Spiller2Navn;
+                    check.setText("Tillykke du har vundet");
+                }
             }
             else {
                 ToSpillere_frag.Spiller1Score++;
                 Spiller1point.setText(String.valueOf(ToSpillere_frag.Spiller1Score));
+                if(ToSpillere_frag.Spiller1Score >= 10) {
+                    vinder = ToSpillere_frag.Spiller1Navn;
+                    check.setText("Tillykke du har vundet");
+                }
             }
 
             tabt.setImageResource(R.mipmap.vundet);
