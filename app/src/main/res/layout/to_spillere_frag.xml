@@ -55,4 +55,28 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="47dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Vælg antal point der spiller til"
+        android:id="@+id/pointTekst"
+        android:layout_below="@+id/Spiller2Navn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp"
+        android:textColor="#000000" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/AntalPoint"
+        android:layout_below="@+id/pointTekst"
+        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@+id/pointTekst"
+        android:layout_alignRight="@+id/pointTekst"
+        android:layout_marginTop="10dp"
+        android:max="10"
+        android:progress="0"
+        android:indeterminate="false" />
 </RelativeLayout>

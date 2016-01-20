@@ -146,7 +146,7 @@ public class ToSpillereSpil_frag extends Fragment implements View.OnClickListene
             if(ToSpillere_frag.spillerTur) {
                 ToSpillere_frag.Spiller2Score++;
                 Spiller2point.setText(String.valueOf(ToSpillere_frag.Spiller2Score));
-                if(ToSpillere_frag.Spiller2Score >= 10) {
+                if(ToSpillere_frag.Spiller2Score >= ToSpillere_frag.antalPointForVind) {
                     vinder = ToSpillere_frag.Spiller2Navn;
                     check.setText("Tillykke du har vundet");
                 }
@@ -154,7 +154,7 @@ public class ToSpillereSpil_frag extends Fragment implements View.OnClickListene
             else {
                 ToSpillere_frag.Spiller1Score++;
                 Spiller1point.setText(String.valueOf(ToSpillere_frag.Spiller1Score));
-                if(ToSpillere_frag.Spiller1Score >= 10) {
+                if(ToSpillere_frag.Spiller1Score >= ToSpillere_frag.antalPointForVind) {
                     vinder = ToSpillere_frag.Spiller1Navn;
                     check.setText("Tillykke du har vundet");
                 }
