@@ -106,7 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="3. Den første der opnår 10 point, vinder"
+        android:text="3. Den første der opnår det antal point man spiller til, vinder"
         android:id="@+id/textView10"
         android:textSize="20sp"
         android:textColor="#030202"
