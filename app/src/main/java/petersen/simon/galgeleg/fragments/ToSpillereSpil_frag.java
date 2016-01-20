@@ -108,6 +108,12 @@ public class ToSpillereSpil_frag extends Fragment implements View.OnClickListene
                         .replace(R.id.fragmentindhold, new VaelgOrd_frag())
                         .commit();
             }
+            else if(check.getText().equals("Tillykke")){
+                logik.nulstil();
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentindhold, new ToSpillereVundet_frag())
+                        .commit();
+            }
             else
                 tjek();
         }
@@ -148,7 +154,7 @@ public class ToSpillereSpil_frag extends Fragment implements View.OnClickListene
                 Spiller2point.setText(String.valueOf(ToSpillere_frag.Spiller2Score));
                 if(ToSpillere_frag.Spiller2Score >= ToSpillere_frag.antalPointForVind) {
                     vinder = ToSpillere_frag.Spiller2Navn;
-                    check.setText("Tillykke du har vundet");
+                    check.setText("Tillykke");
                 }
                 else
                     check.setText("Fortsæt");
@@ -158,7 +164,7 @@ public class ToSpillereSpil_frag extends Fragment implements View.OnClickListene
                 Spiller1point.setText(String.valueOf(ToSpillere_frag.Spiller1Score));
                 if(ToSpillere_frag.Spiller1Score >= ToSpillere_frag.antalPointForVind) {
                     vinder = ToSpillere_frag.Spiller1Navn;
-                    check.setText("Tillykke du har vundet");
+                    check.setText("Tillykke");
                 }
                 else
                     check.setText("Fortsæt");
@@ -201,4 +207,5 @@ public class ToSpillereSpil_frag extends Fragment implements View.OnClickListene
         super.onDestroy();
         logik.nulstil();
     }
+
 }

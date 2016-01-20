@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import petersen.simon.galgeleg.fragments.MenuFragment;
 import petersen.simon.galgeleg.fragments.SpilFragment;
+import petersen.simon.galgeleg.fragments.ToSpillereSpil_frag;
 import petersen.simon.galgeleg.galgeleg.Galgelogik;
 import petersen.simon.galgeleg.galgeleg.HighScoreLogik;
 import petersen.simon.galgeleg.galgeleg.Sensorlistener;
@@ -71,8 +72,12 @@ public class HovedAktivitet extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount()!=1)
-            getSupportFragmentManager().popBackStack();
+        //if (getFragmentManager().getBackStackEntryCount()!=1)
+          //  getSupportFragmentManager().popBackStack();
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.fragmentindhold);
+        if(f instanceof ToSpillereSpil_frag){   }
+        else super.onBackPressed();
+
     }
 
 }
