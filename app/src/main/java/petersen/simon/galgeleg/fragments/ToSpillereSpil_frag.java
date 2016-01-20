@@ -150,6 +150,8 @@ public class ToSpillereSpil_frag extends Fragment implements View.OnClickListene
                     vinder = ToSpillere_frag.Spiller2Navn;
                     check.setText("Tillykke du har vundet");
                 }
+                else
+                    check.setText("Fortsæt");
             }
             else {
                 ToSpillere_frag.Spiller1Score++;
@@ -158,10 +160,12 @@ public class ToSpillereSpil_frag extends Fragment implements View.OnClickListene
                     vinder = ToSpillere_frag.Spiller1Navn;
                     check.setText("Tillykke du har vundet");
                 }
+                else
+                    check.setText("Fortsæt");
             }
 
             tabt.setImageResource(R.mipmap.vundet);
-            check.setText("Fortsæt");
+            //check.setText("Fortsæt");
 
         }
         if (logik.erSpilletTabt()) {
